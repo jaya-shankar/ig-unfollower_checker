@@ -1,0 +1,8 @@
+certifi==2021.5.30
+click==8.0.1
+Flask==2.0.1
+instagram-private-api @ git+https://git@github.com/ping/instagram_private_api.git@1d70e99bc11591161b0cd71cff3f0c08cd04b34f
+itsdangerous==2.0.1
+Jinja2==3.0.1
+MarkupSafe==2.0.1
+Werkzeug==2.0.1

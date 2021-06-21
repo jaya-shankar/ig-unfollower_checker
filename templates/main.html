@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple login form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css">
+  </head>
+  <body>
+    <form action="/result" method="POST">
+      <h1>Login Form</h1>
+      <div class="formcontainer">
+      <hr/>
+      <div class="container">
+        <label for="username"><strong>Instagram Username</strong></label>
+        <input type="text" placeholder="IG Username" name="username" required>
+        <label for="password"><strong>Password</strong></label>
+        <input type="password" placeholder="Password" name="password" required>
+      </div>
+      <button type="submit">Get List</button>
+      <div class="container" style="background-color: #eee ">
+        <label style="padding-left: 15px">
+        <b>Note</b> : We never store your credentials on our server!!
+        </label>
+      </div>
+    </form>
+  </body>
+</html>
