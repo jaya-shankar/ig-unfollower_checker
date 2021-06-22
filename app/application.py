@@ -1,4 +1,5 @@
 from flask import Flask,request,render_template
+from instagram_private_api.errors import ClientThrottledError,ClientError
 from flask.wrappers import Response
 from . import ig_api
 app = Flask(__name__)
@@ -9,7 +10,12 @@ def main(name = None):
         
         username = request.form["username"]
         password = request.form["password"]
-        profile = ig_api.authenticate(username=username, password=password)
+        try:
+            profile = ig_api.authenticate(username=username, password=password)
+        except ClientThrottledError:
+            return "Please Try again Later"
+        except ClientError: 
+            return "Please turn offf two factor authentication and try again"
         if profile == {}:
             return "Failure"
         else:
