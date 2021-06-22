@@ -18,7 +18,6 @@ def get_followers(myProfile):
     unverified_followers=[]
     for follower in followers["users"]:
         if not follower["is_verified"]:
-            print(follower)
             unverified_followers.append(follower)
 
     return unverified_followers
@@ -42,10 +41,11 @@ def get_unfollowers(followings,followers):
         followings_ids.append(following["pk"])
     for follower in followers:
         followers_ids.append(follower["pk"])
-        
+
     for i in range(len(followings_ids)):
         if followings_ids[i] not in followers_ids:
             following["num"] = count
+            followings[i]["num"] = count
             unfollowers.append(followings[i])
             count+=1
     return unfollowers
