@@ -36,9 +36,16 @@ def get_following(myProfile):
 def get_unfollowers(followings,followers):
     unfollowers = []
     count       = 1
+    followings_ids  = []
+    followers_ids   = []
     for following in followings:
-        if following not in followers:
+        followings_ids.append(following["pk"])
+    for follower in followers:
+        followers_ids.append(follower["pk"])
+        
+    for i in range(len(followings_ids)):
+        if followings_ids[i] not in followers_ids:
             following["num"] = count
-            unfollowers.append(following)
+            unfollowers.append(followings[i])
             count+=1
     return unfollowers
