@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Simple login form</title>
+    <title>IG Unfollowers Checker</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="/static/css/main.css">
+    <script src="/static/js/main.js" type="text/javascript"></script>
   </head>
   <body>
-    <form action="/result" method="POST">
-      <h1>Login Form</h1>
+    <form action="/" method="POST">
+      <h1>IG Unfollower Checker</h1>
       <div class="formcontainer">
       <hr/>
       <div class="container">
         <label for="username"><strong>Instagram Username</strong></label>
-        <input type="text" placeholder="IG Username" name="username" required>
+        <input type="text" placeholder="IG Username" name="username" >
         <label for="password"><strong>Password</strong></label>
-        <input type="password" placeholder="Password" name="password" required>
+        <input type="password" placeholder="Password" name="password">
       </div>
       <button type="submit">Get List</button>
       <div class="container" style="background-color: #eee ">
@@ -25,3 +29,25 @@
     </form>
   </body>
 </html>
+{% if users %}
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Username</th>
+      <!-- <th scope="col">Unfollow</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for user in users %}
+    <tr>
+      <th scope="row">{{ user.num }}</th>
+      <td><a href="https://www.instagram.com/{{ user.username }}" target="_blank">{{ user.username }}</a></td>
+      <!-- <td><button class="unfollow" value="{{ user.id }}"> unfollow</button></td> -->
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+</table>
+{% endif %}
