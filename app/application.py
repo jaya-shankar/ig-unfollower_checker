@@ -14,8 +14,8 @@ def main(name = None):
             profile = ig_api.authenticate(username=username, password=password)
         except ClientThrottledError:
             return "Please Try again Later"
-        except ClientError: 
-            return "Please turn offf two factor authentication and try again"
+        # except ClientError: 
+        #     return "Please turn offf two factor authentication and try again"
         if profile == {}:
             return "Failure"
         else:
